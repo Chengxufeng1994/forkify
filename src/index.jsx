@@ -11,7 +11,7 @@ import { elements, renderLoader, removeLoader } from './views/base';
  */
 
 const state = {};
-const { searchForm } = elements;
+const { searchForm, resultsPages, resultsBtnPrev, resultsBtnNext } = elements;
 
 const controlSearch = async () => {
   // Step1. Get query from View
@@ -20,19 +20,33 @@ const controlSearch = async () => {
   if (query) {
     // Step2. New Search object and add to state
     state.search = new Search(query);
+
     // Step3. Prepare UI for results
     searchView.clearInputValue();
     searchView.clearResults();
     renderLoader(elements.searchResult);
+
     // Step4. Search for recipes
     await state.search.getRecipes();
+
     // Step5. Render results on UI
-    searchView.renderResults(state.search.recipes);
     removeLoader();
+    searchView.renderResults(state.search.recipes);
   }
 };
 
 searchForm.addEventListener('submit', (event) => {
   event.preventDefault();
   controlSearch();
+});
+
+resultsPages.addEventListener('click', (event) => {
+  const btn = event.target.closest('.btn-inline');
+
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.gotopage, 10);
+    searchView.clearResults();
+    searchView.renderResults(state.search.recipes, goToPage, 10);
+  }
+
 });

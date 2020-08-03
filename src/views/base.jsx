@@ -3,6 +3,9 @@ export const elements = {
   searchInput: document.querySelector('.search__field'),
   searchResult: document.querySelector('.results'),
   resultsList: document.querySelector('.results__list'),
+  resultsPages: document.querySelector('.results__pages'),
+  resultsBtnPrev: document.querySelector('.results__btn--prev'),
+  resultsBtnNext: document.querySelector('.results__btn--next'),
 };
 
 export const elementStrings = {
