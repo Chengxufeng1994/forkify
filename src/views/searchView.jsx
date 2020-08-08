@@ -1,4 +1,4 @@
-import { elements, elementStrings } from './base';
+import { elements } from './base';
 
 export const getInputValue = () => elements.searchInput.value;
 
@@ -9,7 +9,6 @@ export const clearInputValue = () => {
 export const clearResults = () => {
   elements.resultsList.innerHTML = '';
   elements.resultsPages.innerHTML = '';
-
 };
 
 /*
