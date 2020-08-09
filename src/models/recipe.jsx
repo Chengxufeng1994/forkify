@@ -1,5 +1,4 @@
 import axios from '../api/index';
-
 class Recipe {
   constructor(id) {
     this.id = id;
@@ -18,11 +17,12 @@ class Recipe {
       const {
         data: { recipe },
       } = response;
-
+      // console.log(recipe);
       this.title = recipe.title;
-      this.author = recipe.author;
+      this.author = recipe.publisher;
       this.img = recipe.image_url;
       this.url = recipe.source_url;
+      this.publisherUrl = recipe.publisher_url;
       this.ingredients = recipe.ingredients;
     } catch (error) {
       console.error(error);
@@ -63,6 +63,7 @@ class Recipe {
       'cup',
       'pound',
     ];
+    const units = [...unitsShort, 'kg', 'g'];
 
     const newIngredients = this.ingredients.map((el) => {
       // step1. Uniform units
@@ -78,7 +79,7 @@ class Recipe {
         return unitsShort.includes(el2);
       });
       let objIng;
-      console.log(arrIng, unitIndex);
+      // console.log(arrIng, unitIndex);
       if (unitIndex > -1) {
         // There is a unit
         // Ex. 4 1/2 cups, arrCount is [4, 1/2]
@@ -90,7 +91,7 @@ class Recipe {
         } else {
           count = eval(arrIng.slice(0, unitIndex).join('+'));
         }
-        console.log(arrCount, count);
+        // console.log(arrCount, count);
         objIng = {
           count,
           unit: arrIng[unitIndex],

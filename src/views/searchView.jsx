@@ -11,6 +11,17 @@ export const clearResults = () => {
   elements.resultsPages.innerHTML = '';
 };
 
+export const hightlightSelected = (id) => {
+  const resultArr = document.querySelectorAll('.results__link')
+  resultArr.forEach((el) => el.classList.remove('results__link--active'))
+  const resultId = document.querySelector(`a[href="#${id}"]`);
+  console.log(resultId );
+  resultId.classList.add('results__link--active')
+  // document
+  //   .querySelector(`a [href=#${id}]`)
+  //   .classList.add('.result__link--active');
+};
+
 /*
 // 'Pasta with toato and spinach'
   acc: 0 / acc + cur.length = 5 / newTitle=['Pasta]
@@ -58,9 +69,13 @@ const renderRecipe = (recipe) => {
 };
 
 const createBtn = (page, type) => `
-  <button class="btn-inline results__btn--${type}" data-gotopage=${type === 'prev' ? page - 1 : page + 1}>
+  <button class="btn-inline results__btn--${type}" data-gotopage=${
+  type === 'prev' ? page - 1 : page + 1
+}>
     <svg class="search__icon">
-      <use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+      <use href="img/icons.svg#icon-triangle-${
+        type === 'prev' ? 'left' : 'right'
+      }"></use>
     </svg>
     <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
   </button>
@@ -78,7 +93,7 @@ const renderButtons = (page, numResults, recipesPerPage) => {
     btn = `
       ${createBtn(page, 'next')};
       ${createBtn(page, 'prev')};
-    `
+    `;
   } else if (page === pages && pages > 1) {
     // Only prev btn
     btn = createBtn(page, 'prev');
@@ -89,7 +104,7 @@ const renderButtons = (page, numResults, recipesPerPage) => {
 
 export const renderResults = (recipes, page = 1, recipesPerPage = 10) => {
   const start = (page - 1) * recipesPerPage;
-  const end = page * recipesPerPage
+  const end = page * recipesPerPage;
 
   recipes.slice(start, end).forEach((recipe) => {
     renderRecipe(recipe);
