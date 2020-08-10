@@ -102,3 +102,19 @@ resultsPages.addEventListener('click', (event) => {
 ['hashchange', 'load'].forEach((event) => {
   window.addEventListener(event, controlRecipe);
 });
+
+// handling recipe btns click
+elements.recipe.addEventListener('click', (event) => {
+  if (event.target.matches('.btn-decrease, .btn-decrease *')) {
+    // Decrease btn is clicked
+    if (state.recipes.servings > 1) {
+      state.recipe.updateServings('dec');
+      recipeView.updateServingsIngredients(state.recipe);
+    }
+  } else if (event.target.matches('.btn-increase, .btn-increase *')) {
+    // increase btn is clicked
+    state.recipe.updateServings('inc');
+    recipeView.updateServingsIngredients(state.recipe);
+  }
+  console.log(state.recipe);
+});
