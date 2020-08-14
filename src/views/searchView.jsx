@@ -12,11 +12,11 @@ export const clearResults = () => {
 };
 
 export const hightlightSelected = (id) => {
-  const resultArr = document.querySelectorAll('.results__link')
-  resultArr.forEach((el) => el.classList.remove('results__link--active'))
-  const resultId = document.querySelector(`a[href="#${id}"]`);
-  console.log(resultId );
-  resultId.classList.add('results__link--active')
+  const resultArr = document.querySelectorAll('.results__link');
+  resultArr.forEach((el) => el.classList.remove('results__link--active'));
+  const resultId = document.querySelector(`.results__link[href="#${id}"]`);
+  // console.log(resultId);
+  resultId.classList.add('results__link--active');
   // document
   //   .querySelector(`a [href=#${id}]`)
   //   .classList.add('.result__link--active');
@@ -30,7 +30,7 @@ export const hightlightSelected = (id) => {
   acc: 15 / acc + cur.length = 18 / newTitle=['Pasta', 'with', 'tomato']
   acc: 18 / acc + cur.length = 24 / newTitle=['Pasta', 'with', 'tomato']
 */
-const limitRecipeTitle = (title, limit = 17) => {
+export const limitRecipeTitle = (title, limit = 17) => {
   // if (title.length > limit) {
   //   return title.substring(0, limit) + '...';
   // }
@@ -74,8 +74,8 @@ const createBtn = (page, type) => `
 }>
     <svg class="search__icon">
       <use href="img/icons.svg#icon-triangle-${
-        type === 'prev' ? 'left' : 'right'
-      }"></use>
+  type === 'prev' ? 'left' : 'right'
+}"></use>
     </svg>
     <span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
   </button>

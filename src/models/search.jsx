@@ -1,11 +1,11 @@
 import axios from '../api/index';
+
 class Search {
   constructor(query) {
     this.query = query;
   }
 
   async getRecipes() {
-
     try {
       // const response = await axios.get(`/search?q=${this.query}`);
       const response = await axios({

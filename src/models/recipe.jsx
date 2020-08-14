@@ -1,4 +1,6 @@
+/* eslint-disable no-eval */
 import axios from '../api/index';
+
 class Recipe {
   constructor(id) {
     this.id = id;
@@ -63,7 +65,7 @@ class Recipe {
       'cup',
       'pound',
     ];
-    const units = [...unitsShort, 'kg', 'g'];
+    // const units = [...unitsShort, 'kg', 'g'];
 
     const newIngredients = this.ingredients.map((el) => {
       // step1. Uniform units
@@ -75,9 +77,7 @@ class Recipe {
       ingredient = ingredient.replace(/ *\([^)]*\) */g, ' ');
       // step3. parse ingredients into count, unit and ingredient
       const arrIng = ingredient.split(' ');
-      const unitIndex = arrIng.findIndex((el2) => {
-        return unitsShort.includes(el2);
-      });
+      const unitIndex = arrIng.findIndex((el2) => unitsShort.includes(el2));
       let objIng;
       // console.log(arrIng, unitIndex);
       if (unitIndex > -1) {

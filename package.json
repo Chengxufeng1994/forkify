@@ -7,6 +7,7 @@
     "start": "webpack-dev-server --watch --progress --colors --mode development",
     "build:dev": "webpack --mode development",
     "build:prod": "webpack --mode production",
+    "lint": "eslint src/**/*.jsx",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cheng",
@@ -37,6 +38,7 @@
     "@babel/polyfill": "^7.10.4",
     "@babel/runtime": "^7.10.5",
     "axios": "^0.19.2",
+    "babel-eslint": "^10.1.0",
     "fractional": "^1.0.0",
     "uniqid": "^5.2.0"
   }
