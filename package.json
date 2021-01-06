@@ -37,7 +37,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
     "@babel/runtime": "^7.10.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "fractional": "^1.0.0",
     "uniqid": "^5.2.0"
